@@ -7,6 +7,7 @@ import { Router, Route, Switch } from 'dva/router';
 // import IndexPage from './routes/IndexPage';
 // import Products from './routes/Products'; // 加
 import BasicLayout from './layouts/BasicLayout'; // 加
+// import test from './layouts/test'; // 加
 
 function RouterConfig({ history }) {
   return (

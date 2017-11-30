@@ -37,10 +37,27 @@ const { SubMenu } = Menu;
 
 class BasicLayout extends React.Component {
 
+
+  state = {
+    collapsed: false,
+  };
+  toggle = () => {
+    this.setState({
+      collapsed: !this.state.collapsed,
+    });
+  }
+
   render() {
     const layout = (
       <Layout>
-        <Sider className={styles.left} style={{ width: '500px' }}>
+        <Sider
+          className={styles.left}
+          // onOpenChange={this.onOpenChange}
+          style={{ width: '500px' }}
+          trigger={null}
+          collapsible
+          collapsed={this.state.collapsed}
+        >
           <div className={styles.logo}>
             <a href="#/">
               <img src="https://gw.alipayobjects.com/zos/rmsportal/iwWyPinUoseUxIAeElSx.svg" alt="logo" />
@@ -48,19 +65,18 @@ class BasicLayout extends React.Component {
             </a>
           </div>
           <Menu
+            theme="dark"
             mode="inline"
-            // openKeys={this.state.openKeys}
-            onOpenChange={this.onOpenChange}
-            style={{ width: 200 }}
+            style={{ marginTop: '10px', background: 'rgb(14, 114, 84)' }}
           >
-            <SubMenu key="sub1" title={<span><Icon type="clock-circle-o" /><span>Dashboard</span></span>}>
+            <SubMenu title={<span><Icon type="clock-circle-o" /><span>Dashboard</span></span>}>
               <Menu.Item key="1">分析页</Menu.Item>
               <Menu.Item key="2">监控页</Menu.Item>
               <Menu.Item key="3">工作台</Menu.Item>
               {/* <Menu.Item key="4">Option 4</Menu.Item> */}
             </SubMenu>
             <SubMenu key="sub2" title={<span><Icon type="edit" /><span>表单页</span></span>}>
-              <Menu.Item key="4">基础表单</Menu.Item>
+              <Menu.Item key="4" Link to="/www.baidu.com">基础表单</Menu.Item>
               <Menu.Item key="5">分步表单</Menu.Item>
               <Menu.Item key="6">高级表单</Menu.Item>
               {/* <SubMenu key="sub3" title="Submenu">
@@ -102,7 +118,13 @@ class BasicLayout extends React.Component {
           </Menu>
         </Sider>
         <Layout className={styles.right}>
-          <Header className={styles.header}>header</Header>
+          <Header className={styles.header}>header
+          <Icon
+            className={styles.trigger}
+            type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+            onClick={this.toggle}
+          />
+          </Header>
           <Content className={styles.content}>main content</Content>
           <Footer className={styles.footer}>footer</Footer>
         </Layout>
