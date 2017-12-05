@@ -1,5 +1,5 @@
 /**
- * 2017-11.27 ligang
+ * ligang
  */
 
 import React from 'react';

@@ -1,3 +1,7 @@
+/**
+ * ligang
+ */
+
 import React from 'react';
 import { connect } from 'dva';
 import ProductList from '../components/ProductList';
